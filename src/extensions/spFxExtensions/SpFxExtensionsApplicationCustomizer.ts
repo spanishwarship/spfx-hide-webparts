@@ -5,8 +5,6 @@ import {
 } from '@microsoft/sp-application-base';
 import { Dialog } from '@microsoft/sp-dialog';
 
-import * as strings from 'SpFxExtensionsApplicationCustomizerStrings';
-
 const LOG_SOURCE: string = 'SpFxExtensionsApplicationCustomizer';
 
 import HideClassicExp from './hideClassicExperienceLink/HideClassicExperienceLinkApplicationCustomizer';
@@ -27,18 +25,16 @@ export default class SpFxExtensionsApplicationCustomizer
 
   @override
   public onInit(): Promise<void> {
-    Log.info(LOG_SOURCE, `Initialized ${strings.Title}`);
+    Log.info(LOG_SOURCE, `Initialized "SPFx Extensions"`);
 
     let message: string = this.properties.testMessage;
     if (!message) {
       message = '(No properties were provided.)';
     }
 
-    Dialog.alert(`Hello from ${strings.Title}:\n\n${message}`);
+    Dialog.alert(`Hello from "SPFx Extensions":\n\n${message}`);
 
-    const hideClassicExp = new HideClassicExp();
-
-    hideClassicExp.initExtension();
+    HideClassicExp.initExtension();
 
     return Promise.resolve();
   }
