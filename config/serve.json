@@ -4,7 +4,7 @@
   "https": true,
   "serveConfigurations": {
     "default": {
-      "pageUrl": "https://contoso.sharepoint.com/sites/mySite/SitePages/myPage.aspx",
+      "pageUrl": "https://appliancedirectclan.sharepoint.com/sites/ts1-o365",
       "customActions": {
         "9fa08de5-f2c4-4af7-a983-c9a5add9d64a": {
           "location": "ClientSideExtension.ApplicationCustomizer",

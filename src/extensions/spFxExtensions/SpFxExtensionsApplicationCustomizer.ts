@@ -9,6 +9,8 @@ import * as strings from 'SpFxExtensionsApplicationCustomizerStrings';
 
 const LOG_SOURCE: string = 'SpFxExtensionsApplicationCustomizer';
 
+import HideClassicExp from './hideClassicExperienceLink/HideClassicExperienceLinkApplicationCustomizer';
+
 /**
  * If your command set uses the ClientSideComponentProperties JSON input,
  * it will be deserialized into the BaseExtension.properties object.
@@ -33,6 +35,10 @@ export default class SpFxExtensionsApplicationCustomizer
     }
 
     Dialog.alert(`Hello from ${strings.Title}:\n\n${message}`);
+
+    const hideClassicExp = new HideClassicExp();
+
+    hideClassicExp.initExtension();
 
     return Promise.resolve();
   }
