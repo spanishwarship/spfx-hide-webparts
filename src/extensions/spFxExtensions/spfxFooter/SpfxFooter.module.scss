@@ -1,0 +1,25 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+  .app {
+    font-family: "Segoe UI Regular WestEuropean","Segoe UI",Tahoma,Arial,sans-serif !important;
+    
+    .bottom {
+        height:60px;
+        text-align:center;
+        display: block;
+        background-color: $ms-color-themeSecondary;
+        color: $ms-color-white;
+
+        div {
+            height: 20px;
+        }
+
+        .bold {
+          font-weight:bold;
+        }
+    }
+
+    .icon {
+        margin-right: 5px;
+    }
+  }
