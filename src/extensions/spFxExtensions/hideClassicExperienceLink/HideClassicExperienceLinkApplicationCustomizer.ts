@@ -4,12 +4,10 @@ import {
   BaseApplicationCustomizer
 } from '@microsoft/sp-application-base';
 
-import getUrlParam from './lib/url-params';
+import getUrlParam from '../lib/url-params';
 import adminUsers from './config/admins';
 
-import debugLog from './services/debug-logger';
-
-// import * as strings from 'HideClassicExperienceLinkApplicationCustomizerStrings';
+import debugLog from '../services/debug-logger';
 
 const LOG_SOURCE: string = 'HideClassicExperienceLinkApplicationCustomizer';
 
