@@ -19,11 +19,18 @@ const LOG_SOURCE: string = 'SpfxFooterApplicationCustomizer';
  * it will be deserialized into the BaseExtension.properties object.
  * You can define an interface to describe it.
  */
-export interface ISpfxFooterApplicationCustomizerProperties {}
+export interface ISpfxFooterApplicationCustomizerProperties {
+  context: object;
+}
 
 /** A Custom Action which can be run during execution of a Client Side Application */
 export default class SpfxFooterApplicationCustomizer
   extends BaseApplicationCustomizer<ISpfxFooterApplicationCustomizerProperties> {
+    constructor(props) {
+      super()
+
+      this.properties.context = props.context;
+    }
   
   private _bottomPlaceholder: PlaceholderContent | undefined;
 
@@ -38,7 +45,7 @@ export default class SpfxFooterApplicationCustomizer
   private _renderPlaceHolders(): void {
     // Handling the bottom placeholder
     if (!this._bottomPlaceholder) {
-      this._bottomPlaceholder = this.context.placeholderProvider.tryCreateContent(
+      this._bottomPlaceholder = this.properties.context["placeholderProvider"].tryCreateContent(
         PlaceholderName.Bottom,
         { onDispose: this._onDispose }
       );
@@ -63,29 +70,31 @@ export default class SpfxFooterApplicationCustomizer
     console.log('[SpfxFooterApplicationCustomizer._onDispose] Disposed custom top and bottom placeholders.');
   }
 
-  private _defineRemove(): void {
-    // Create Element.remove() function if not exist
-    if (!('remove' in Element.prototype)) {
-      /* eslint ignore next */
-      Element.prototype.remove = function () {
-        if (this.parentNode) {
-          this.parentNode.removeChild(this);
-        }
-      };
-    }
-  }
+  // private _defineRemove(): void {
+  //   // Create Element.remove() function if not exist
+  //   if (!('remove' in Element.prototype)) {
+  //     /* eslint ignore next */
+  //     Element.prototype.remove = function () {
+  //       if (this.parentNode) {
+  //         this.parentNode.removeChild(this);
+  //       }
+  //     };
+  //   }
+  // }
 
   public initExtension(): Promise<void> {
+    alert("Trying footer")
     Log.info(LOG_SOURCE, `Initialized SPFx Footer`);
     addStyleSheetRules();
     checkForElemExistance();
     handlePrint();
     
-    this._defineRemove();
+    // this._defineRemove();
 
     // Wait for the placeholders to be created (or handle them being changed) and then
     // render.
-    this.context.placeholderProvider.changedEvent.add(this, this._renderPlaceHolders);
+    document["theContext"] = this;
+    this.properties.context["placeholderProvider"].changedEvent.add(this, this._renderPlaceHolders);
 
     return Promise.resolve<void>();
   }
