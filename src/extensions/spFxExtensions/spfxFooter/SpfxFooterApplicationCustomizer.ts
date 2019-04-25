@@ -1,4 +1,3 @@
-import { override } from '@microsoft/decorators';
 import { Log } from '@microsoft/sp-core-library';
 import {
   BaseApplicationCustomizer,
@@ -76,8 +75,7 @@ export default class SpfxFooterApplicationCustomizer
     }
   }
 
-  @override
-  public onInit(): Promise<void> {
+  public initExtension(): Promise<void> {
     Log.info(LOG_SOURCE, `Initialized SPFx Footer`);
     addStyleSheetRules();
     checkForElemExistance();
