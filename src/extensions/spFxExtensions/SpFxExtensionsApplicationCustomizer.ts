@@ -8,6 +8,7 @@ import { Dialog } from '@microsoft/sp-dialog';
 const LOG_SOURCE: string = 'SpFxExtensionsApplicationCustomizer';
 
 import HideClassicExp from './hideClassicExperienceLink/HideClassicExperienceLinkApplicationCustomizer';
+import HideWebparts from './hideWebpartsExtension/HideWebpartsExtensionApplicationCustomizer';
 
 /**
  * If your command set uses the ClientSideComponentProperties JSON input,
@@ -35,6 +36,7 @@ export default class SpFxExtensionsApplicationCustomizer
     Dialog.alert(`Hello from "SPFx Extensions":\n\n${message}`);
 
     HideClassicExp.initExtension();
+    HideWebparts.initExtension();
 
     return Promise.resolve();
   }
