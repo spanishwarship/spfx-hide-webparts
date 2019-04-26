@@ -38,10 +38,7 @@ export default class SpFxExtensionsApplicationCustomizer
 
     HideClassicExp.initExtension();
     HideWebparts.initExtension();
-
-    this.context.application.navigatedEvent.add(this, () => {
-      footerExt.initExtension();
-    });
+    footerExt.initExtension();
 
     return Promise.resolve();
   }
