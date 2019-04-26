@@ -36,11 +36,12 @@ export default class SpFxExtensionsApplicationCustomizer
       message = '(No properties were provided.)';
     }
 
-    Dialog.alert(`Hello from "SPFx Extensions":\n\n${message}`);
-
     HideClassicExp.initExtension();
     HideWebparts.initExtension();
-    footerExt.initExtension();
+
+    this.context.application.navigatedEvent.add(this, () => {
+      footerExt.initExtension();
+    });
 
     return Promise.resolve();
   }

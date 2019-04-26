@@ -1,6 +1,6 @@
 import { Log } from '@microsoft/sp-core-library';
 
-import addStylesheetRules from './lib/styles-sheet'
+import addStylesheetRules from './lib/styles-sheet';
 
 import {
   handleSearch,
@@ -32,24 +32,24 @@ export default class HideWebpartsExtensionApplicationCustomizer {
   private static showWhitelistedItems() {
     
     setTimeout(() => {
-      handleSearch(() => {this.showWhitelistedItems()});
-      handleCategoryLinkClick(() => {this.showWhitelistedItems()});
-      handleCategoryChange(() => {this.showWhitelistedItems()});
-      handleSeeAllClick(() => {this.showWhitelistedItems()});
-      handleBackButton(() => {this.showWhitelistedItems()});
-      handleSearchClear(() => {this.showWhitelistedItems()});
+      handleSearch(() => {this.showWhitelistedItems();});
+      handleCategoryLinkClick(() => {this.showWhitelistedItems();});
+      handleCategoryChange(() => {this.showWhitelistedItems();});
+      handleSeeAllClick(() => {this.showWhitelistedItems();});
+      handleBackButton(() => {this.showWhitelistedItems();});
+      handleSearchClear(() => {this.showWhitelistedItems();});
       
       let buttons = document.querySelectorAll('div[id^="toolbox-callout"]:not([class*="sectionCallout_"]) button.ms-Button');
 
       for (let i = 0; i < buttons.length; i++) {
         // for (let item of buttons) {
-        let item = buttons[i]
-        let titleElem = item.querySelector('div[class*="title_"]')
+        let item = buttons[i];
+        let titleElem = item.querySelector('div[class*="title_"]');
         if (titleElem && titleElem["innerText"]) {
-          let title = titleElem["innerText"]
+          let title = titleElem["innerText"];
 
           if (whiteList.indexOf(title) !== -1) {
-            item["style"].display = "inline-block"
+            item["style"].display = "inline-block";
           } else {
             // window.buttonsBlackList.push(title)
           }
@@ -57,21 +57,21 @@ export default class HideWebpartsExtensionApplicationCustomizer {
       }
 
 
-      let buttonsFromExpandedPanel = document.querySelectorAll('div.ms-Dialog-main div[class^="grid_"]')
+      let buttonsFromExpandedPanel = document.querySelectorAll('div.ms-Dialog-main div[class^="grid_"]');
 
       for (let i = 0; i < buttonsFromExpandedPanel.length; i++) {
         // for (let item of buttonsFromExpandedPanel) {
         let item = buttonsFromExpandedPanel[i];
-        let titleElem = item.querySelector('div[class*="title_"]')
+        let titleElem = item.querySelector('div[class*="title_"]');
         if (titleElem && titleElem["innerText"]) {
-          let title = titleElem["innerText"]
+          let title = titleElem["innerText"];
 
           if (whiteList.indexOf(title) !== -1) {
-            item["style"].display = "inline-block"
+            item["style"].display = "inline-block";
           }
         }
       }
-    }, 500)
+    }, 500);
 
   }
 
@@ -80,9 +80,9 @@ export default class HideWebpartsExtensionApplicationCustomizer {
 
     if (document.location.href.toLowerCase().indexOf('/_layouts/15/sharepoint.aspx') === -1) {
       mutationObserver(() => {
-        this.showWhitelistedItems()
-      })
-      addStylesheetRules()
+        this.showWhitelistedItems();
+      });
+      addStylesheetRules();
     }
   }
 }

@@ -27,7 +27,7 @@ export interface ISpfxFooterApplicationCustomizerProperties {
 export default class SpfxFooterApplicationCustomizer
   extends BaseApplicationCustomizer<ISpfxFooterApplicationCustomizerProperties> {
     constructor(props) {
-      super()
+      super();
 
       this.properties.context = props.context;
     }
@@ -83,7 +83,8 @@ export default class SpfxFooterApplicationCustomizer
   // }
 
   public initExtension(): Promise<void> {
-    alert("Trying footer")
+    alert("Trying footer");
+
     Log.info(LOG_SOURCE, `Initialized SPFx Footer`);
     addStyleSheetRules();
     checkForElemExistance();
