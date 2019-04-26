@@ -5,6 +5,6 @@ const classList = {
     seeAllButtons: "button[class*='seeAllButton_']",
     categoryLinks: '.ms-Dialog-main button[id*="CategoryContextualMenu"]',
     categoryListLinks: '.ms-ContextualMenu-link'
-}
+};
 
-export default classList
+export default classList;

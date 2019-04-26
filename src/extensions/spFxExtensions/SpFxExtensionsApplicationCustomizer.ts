@@ -9,6 +9,7 @@ const LOG_SOURCE: string = 'SpFxExtensionsApplicationCustomizer';
 
 import HideClassicExp from './hideClassicExperienceLink/HideClassicExperienceLinkApplicationCustomizer';
 import HideWebparts from './hideWebpartsExtension/HideWebpartsExtensionApplicationCustomizer';
+import Footer from './spfxFooter/SpfxFooterApplicationCustomizer';
 
 /**
  * If your command set uses the ClientSideComponentProperties JSON input,
@@ -26,6 +27,8 @@ export default class SpFxExtensionsApplicationCustomizer
 
   @override
   public onInit(): Promise<void> {
+    let footerExt = new Footer({context: this.context});
+
     Log.info(LOG_SOURCE, `Initialized "SPFx Extensions"`);
 
     let message: string = this.properties.testMessage;
@@ -33,10 +36,9 @@ export default class SpFxExtensionsApplicationCustomizer
       message = '(No properties were provided.)';
     }
 
-    Dialog.alert(`Hello from "SPFx Extensions":\n\n${message}`);
-
     HideClassicExp.initExtension();
     HideWebparts.initExtension();
+    footerExt.initExtension();
 
     return Promise.resolve();
   }

@@ -53,4 +53,4 @@ const whiteList = [
 
 // export default fullList
 // export default blackList
-export default whiteList
+export default whiteList;

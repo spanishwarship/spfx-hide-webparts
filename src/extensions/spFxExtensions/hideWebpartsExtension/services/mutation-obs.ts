@@ -4,10 +4,10 @@ function mutationObserver(callback) {
         
         if (mutation && mutation.addedNodes.length > 0 && mutation.addedNodes[0]["className"] && mutation.addedNodes[0]["className"].indexOf && mutation.addedNodes[0]["className"].indexOf('ms-Layer') !== -1) {
           // document.divList.push(mutation)
-          callback()
+          callback();
         }
-      })
-    })
+      });
+    });
 
     bodyObserver.observe(document.querySelector('body'), {
       attributes: false,
@@ -16,17 +16,17 @@ function mutationObserver(callback) {
       subtree: false,
       attributeOldValue: false,
       characterDataOldValue: false
-    })
+    });
 
-    var mutationObserver = new MutationObserver((mutations) => {
+    var mutationObs = new MutationObserver((mutations) => {
 
       mutations.forEach((mutation) => {
-        document["divList"] = document["divList"] || []
+        document["divList"] = document["divList"] || [];
         if (mutation.type === "childList") {
 
           
           if (mutation && mutation.addedNodes.length > 0 && mutation.addedNodes[0] && mutation.addedNodes[0]["className"] && mutation.addedNodes[0]["className"].indexOf && mutation.addedNodes[0]["className"].indexOf('container_') !== -1) {
-            callback()
+            callback();
           }
         }
       });
@@ -35,7 +35,7 @@ function mutationObserver(callback) {
     let canvas = document.querySelector('.SPCanvas');
 
     if (canvas && document.location.href.toLowerCase().indexOf('/_layouts/15/sharepoint.aspx') === -1) {
-      mutationObserver.observe(document.querySelector('.SPCanvas'), {
+      mutationObs.observe(document.querySelector('.SPCanvas'), {
         attributes: false,
         characterData: false,
         childList: true,
@@ -46,4 +46,4 @@ function mutationObserver(callback) {
     }
   }
 
-  export default mutationObserver
+  export default mutationObserver;
