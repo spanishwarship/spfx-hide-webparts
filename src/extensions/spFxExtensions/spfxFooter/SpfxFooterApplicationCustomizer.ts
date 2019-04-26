@@ -2,7 +2,8 @@ import { Log } from '@microsoft/sp-core-library';
 import {
   BaseApplicationCustomizer,
   PlaceholderContent,
-  PlaceholderName
+  PlaceholderName,
+  ApplicationCustomizerContext
 } from '@microsoft/sp-application-base';
 
 import styles from './SpfxFooter.module.scss';
@@ -20,7 +21,7 @@ const LOG_SOURCE: string = 'SpfxFooterApplicationCustomizer';
  * You can define an interface to describe it.
  */
 export interface ISpfxFooterApplicationCustomizerProperties {
-  context: object;
+  context: ApplicationCustomizerContext;
 }
 
 /** A Custom Action which can be run during execution of a Client Side Application */
@@ -93,7 +94,7 @@ export default class SpfxFooterApplicationCustomizer
 
     // Wait for the placeholders to be created (or handle them being changed) and then
     // render.
-    this.properties.context["placeholderProvider"].changedEvent.add(this, this._renderPlaceHolders);
+    this.properties.context.placeholderProvider.changedEvent.add(this, this._renderPlaceHolders);
 
     return Promise.resolve<void>();
   }
