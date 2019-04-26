@@ -70,31 +70,29 @@ export default class SpfxFooterApplicationCustomizer
     console.log('[SpfxFooterApplicationCustomizer._onDispose] Disposed custom top and bottom placeholders.');
   }
 
-  // private _defineRemove(): void {
-  //   // Create Element.remove() function if not exist
-  //   if (!('remove' in Element.prototype)) {
-  //     /* eslint ignore next */
-  //     Element.prototype.remove = function () {
-  //       if (this.parentNode) {
-  //         this.parentNode.removeChild(this);
-  //       }
-  //     };
-  //   }
-  // }
+  private _defineRemove(): void {
+    // Create Element.remove() function if not exist
+    if (!('remove' in Element.prototype)) {
+      /* eslint ignore next */
+      Element.prototype.remove = function () {
+        if (this.parentNode) {
+          this.parentNode.removeChild(this);
+        }
+      };
+    }
+  }
 
   public initExtension(): Promise<void> {
-    alert("Trying footer");
 
     Log.info(LOG_SOURCE, `Initialized SPFx Footer`);
     addStyleSheetRules();
     checkForElemExistance();
     handlePrint();
     
-    // this._defineRemove();
+    this._defineRemove();
 
     // Wait for the placeholders to be created (or handle them being changed) and then
     // render.
-    document["theContext"] = this;
     this.properties.context["placeholderProvider"].changedEvent.add(this, this._renderPlaceHolders);
 
     return Promise.resolve<void>();
