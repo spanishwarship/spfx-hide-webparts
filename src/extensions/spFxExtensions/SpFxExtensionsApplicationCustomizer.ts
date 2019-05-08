@@ -3,7 +3,6 @@ import { Log } from '@microsoft/sp-core-library';
 import {
   BaseApplicationCustomizer
 } from '@microsoft/sp-application-base';
-import { Dialog } from '@microsoft/sp-dialog';
 
 const LOG_SOURCE: string = 'SpFxExtensionsApplicationCustomizer';
 
@@ -24,11 +23,26 @@ export interface ISpFxExtensionsApplicationCustomizerProperties {
 /** A Custom Action which can be run during execution of a Client Side Application */
 export default class SpFxExtensionsApplicationCustomizer
   extends BaseApplicationCustomizer<ISpFxExtensionsApplicationCustomizerProperties> {
+    private _footer = null;
+
+    public _onNavigate(): void {
+      if (this.context && this.context.placeholderProvider) {
+        for (let placeHolder of this.context.placeholderProvider["_placeholderContents"]) {
+          console.log("placeholder", placeHolder);
+          placeHolder.dispose();
+        }
+      }
+      
+        // if (this._footer) {
+        //   // this._footer.dispose();
+        // }
+        
+        this._footer.initExtension();
+  
+    }
 
   @override
   public onInit(): Promise<void> {
-    let footerExt = new Footer({context: this.context});
-
     Log.info(LOG_SOURCE, `Initialized "SPFx Extensions"`);
 
     let message: string = this.properties.testMessage;
@@ -38,10 +52,10 @@ export default class SpFxExtensionsApplicationCustomizer
 
     HideClassicExp.initExtension();
     HideWebparts.initExtension();
-    
-    this.context.application.navigatedEvent.add(this, () => {
-      footerExt.initExtension();
-    });
+
+    this._footer = new Footer({context: this.context});
+
+    this.context.application.navigatedEvent.add(this, () => {this._onNavigate();});
 
     return Promise.resolve();
   }

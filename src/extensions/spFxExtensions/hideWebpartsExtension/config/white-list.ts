@@ -1,5 +1,4 @@
 const whiteList = [
-    "Anchor",
     "Code Snippet",
     "Countdown Timer",
     "Divider",
@@ -23,7 +22,6 @@ const whiteList = [
     "Power BI",
     "Quick chart",
     "Quick links",
-    "RSS",
     "Recent documents",
     "Site activity",
     "Sites",
