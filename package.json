@@ -9,7 +9,8 @@
     "build": "gulp bundle",
     "clean": "gulp clean",
     "test": "gulp test",
-    "package": "gulp version-bump && gulp bundle --ship && gulp package-solution --ship"
+    "package-build": "gulp build-bump && gulp bundle --ship && gulp package-solution --ship",
+    "package": "gulp maintenance-bump && gulp bundle --ship && gulp package-solution --ship"
   },
   "dependencies": {
     "@microsoft/decorators": "1.7.1",
