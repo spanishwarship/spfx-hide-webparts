@@ -34,12 +34,12 @@ function handleSearch(callback) {
   if (!callback) {
     throw new Error("callback variable is not defined.");
   }
-  // console.log("Handle search")
+  
   const searchBox = document.querySelector(WebpartListSelectors.searchBox);
 
   if (searchBox) {
     searchBox["onkeydown"] = () => {
-      // console.log("Search")
+      
       setTimeout(() => {
         callback();
         handleSearchClear(callback);
@@ -63,8 +63,8 @@ function handleSeeAllClick(callback) {
 
   if (seeAllButtons.length) {
     for (let i = 0; i < seeAllButtons.length; i++) {
+      
       seeAllButtons[i]["onclick"] = () => {
-
         setTimeout(() => {
           callback();
         }, 50);
@@ -85,7 +85,6 @@ function handleCategoryLinkClick(callback) {
 
   if (button) {
     button["onclick"] = () => {
-      // console.log("Cat click")
       setTimeout(() => {
         callback();
       }, 10);
@@ -102,12 +101,9 @@ function handleCategoryChange(callback) {
     let categoryList = document.querySelectorAll(WebpartListSelectors.categoryListLinks);
 
     for (let i = 0; i < categoryList.length; i++) {
-      // for (let category of categoryList) {
       let category = categoryList[i];
-      console.log(category);
+      
       category["onclick"] = () => {
-        console.log("Cat Change");
-
         setTimeout(() => {
           callback();
         }, 300);
