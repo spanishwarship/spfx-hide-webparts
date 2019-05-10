@@ -3,7 +3,6 @@ function mutationObserver(callback) {
       mutations.forEach((mutation) => {
         
         if (mutation && mutation.addedNodes.length > 0 && mutation.addedNodes[0]["className"] && mutation.addedNodes[0]["className"].indexOf && mutation.addedNodes[0]["className"].indexOf('ms-Layer') !== -1) {
-          // document.divList.push(mutation)
           callback();
         }
       });

@@ -27,7 +27,12 @@ const whiteList = [
     "Sites",
     "Spacer",
     "Text",
-    "Weather"
+    "Weather",
+    "One column",
+    "Two columns",
+    "Three columns",
+    "One-third left column",
+    "One-third right column"
 ];
 
 // Blacklist on team sites

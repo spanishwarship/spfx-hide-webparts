@@ -100,7 +100,6 @@ function handleCategoryChange(callback) {
   }
   setTimeout(() => {
     let categoryList = document.querySelectorAll(WebpartListSelectors.categoryListLinks);
-    console.log(categoryList.length);
 
     for (let i = 0; i < categoryList.length; i++) {
       // for (let category of categoryList) {
