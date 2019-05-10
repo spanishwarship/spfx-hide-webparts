@@ -40,7 +40,7 @@ export default class HideWebpartsExtensionApplicationCustomizer {
       handleSearchClear(() => {this.showWhitelistedItems();});
       
       let buttons = document.querySelectorAll('div[id^="toolbox-callout"]:not([class*="sectionCallout_"]) button.ms-Button');
-
+      // window["buttonsBlackList"] = [];
       for (let i = 0; i < buttons.length; i++) {
         // for (let item of buttons) {
         let item = buttons[i];
@@ -51,7 +51,7 @@ export default class HideWebpartsExtensionApplicationCustomizer {
           if (whiteList.indexOf(title) !== -1) {
             item["style"].display = "inline-block";
           } else {
-            // window.buttonsBlackList.push(title)
+            // window["buttonsBlackList"].push(title);
           }
         }
       }
@@ -59,6 +59,7 @@ export default class HideWebpartsExtensionApplicationCustomizer {
 
       let buttonsFromExpandedPanel = document.querySelectorAll('div.ms-Dialog-main div[class^="grid_"]');
 
+      // window["expandedBlacklist"] = [];
       for (let i = 0; i < buttonsFromExpandedPanel.length; i++) {
         // for (let item of buttonsFromExpandedPanel) {
         let item = buttonsFromExpandedPanel[i];
@@ -68,6 +69,8 @@ export default class HideWebpartsExtensionApplicationCustomizer {
 
           if (whiteList.indexOf(title) !== -1) {
             item["style"].display = "inline-block";
+          } else {
+            // window["expandedBlacklist"].push(title);
           }
         }
       }
