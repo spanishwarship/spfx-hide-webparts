@@ -13,6 +13,7 @@ import checkForElemExistance from './services/elem-check';
 
 import handlePrint from './services/print-handler';
 
+
 const LOG_SOURCE: string = 'SpfxFooterApplicationCustomizer';
 
 /**
@@ -22,6 +23,7 @@ const LOG_SOURCE: string = 'SpfxFooterApplicationCustomizer';
  */
 export interface ISpfxFooterApplicationCustomizerProperties {
   context: ApplicationCustomizerContext;
+  browser: string;
 }
 
 /** A Custom Action which can be run during execution of a Client Side Application */
@@ -97,7 +99,7 @@ export default class SpfxFooterApplicationCustomizer
       
       // this._defineRemove();
     // if (false) {
-      if (this._loadCount === 0) {
+    if (this._loadCount === 0) {
       Log.info(LOG_SOURCE, `Initialized SPFx Footer`);
       addStyleSheetRules();
       checkForElemExistance();
@@ -109,7 +111,9 @@ export default class SpfxFooterApplicationCustomizer
       // render.
       
       this.properties.context.placeholderProvider.changedEvent.add(this, this._renderPlaceHolders);
-    } else if (this._loadCount === 1) {
+    // } else if (this._loadCount === 1) {
+      // alert("doing it again");
+    } else if (this._loadCount === 1 && this.properties.browser === "app") {
       let elem = document.createElement('div');
       elem.setAttribute('style', 'position: fixed; bottom: 0; width: 100%; z-index: 999;');
       elem.innerHTML = this._footerText;

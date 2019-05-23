@@ -10,6 +10,9 @@ import HideClassicExp from './hideClassicExperienceLink/HideClassicExperienceLin
 import HideWebparts from './hideWebpartsExtension/HideWebpartsExtensionApplicationCustomizer';
 import Footer from './spfxFooter/SpfxFooterApplicationCustomizer';
 
+
+import { getBrowser } from './lib/utils';
+
 /**
  * If your command set uses the ClientSideComponentProperties JSON input,
  * it will be deserialized into the BaseExtension.properties object.
@@ -18,18 +21,27 @@ import Footer from './spfxFooter/SpfxFooterApplicationCustomizer';
 export interface ISpFxExtensionsApplicationCustomizerProperties {
   // This is an example; replace with your own property
   testMessage: string;
+  browser: string;
 }
 
 /** A Custom Action which can be run during execution of a Client Side Application */
 export default class SpFxExtensionsApplicationCustomizer
   extends BaseApplicationCustomizer<ISpFxExtensionsApplicationCustomizerProperties> {
+    constructor(props) {
+      super();
+
+      this.properties.browser = getBrowser();
+    }
+
     private _footer = null;
 
     public _onNavigate(): void {
       if (this.context && this.context.placeholderProvider) {
         for (let placeHolder of this.context.placeholderProvider["_placeholderContents"]) {
-          console.log("placeholder", placeHolder);
-          placeHolder.dispose();
+          
+          if (getBrowser() === "app") {
+            placeHolder.dispose();
+          }          
         }
       }
       
