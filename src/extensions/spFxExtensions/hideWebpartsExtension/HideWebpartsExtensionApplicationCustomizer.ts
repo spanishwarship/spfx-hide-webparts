@@ -39,7 +39,7 @@ export default class HideWebpartsExtensionApplicationCustomizer {
       handleBackButton(() => {this.showWhitelistedItems();});
       handleSearchClear(() => {this.showWhitelistedItems();});
       
-      let buttons = document.querySelectorAll('div[id^="toolbox-callout"]:not([class*="sectionCallout_"]) button.ms-Button');
+      let buttons = document.querySelectorAll('div.ms-Callout:not([class*="sectionCallout_"]) button.ms-Button');
       // window["buttonsBlackList"] = [];
       for (let i = 0; i < buttons.length; i++) {
         // for (let item of buttons) {
