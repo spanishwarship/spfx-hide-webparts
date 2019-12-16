@@ -43,7 +43,6 @@ export default class SpfxFooterApplicationCustomizer
                                     <div class="${styles.bottom}">
                                         <div class="${styles.bold}">INTERNAL USE ONLY - DO NOT SHOW OR DISTRIBUTE TO THE PUBLIC.</div>
                                         <div>This material does NOT meet the requirements for use in printed or media form.</div>
-                                        <div>© 2019 Edward D. Jones & Co., L.P. All rights reserved.</div>
                                     </div>
                                 </footer>`;
 
