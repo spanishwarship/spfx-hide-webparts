@@ -46,6 +46,12 @@ export default class SpfxFooterApplicationCustomizer
                                     </div>
                                 </footer>`;
 
+  // private _footerText: string = `<footer id="spfx-footer" class="${styles.app}">
+  //                                   <div class="${styles.bottom}">
+  //                                       <div class="${styles.bold}">INTERNAL USE ONLY - DO NOT SHOW OR DISTRIBUTE TO THE PUBLIC. This material does NOT meet the requirements for use in printed or media form.</div>
+  //                                   </div>
+  //                               </footer>`;
+
   private _renderPlaceHolders(): void {
     // Handling the bottom placeholder
 
@@ -78,17 +84,17 @@ export default class SpfxFooterApplicationCustomizer
     console.log('[SpfxFooterApplicationCustomizer._onDispose] Disposed custom top and bottom placeholders.');
   }
 
-  private _defineRemove(): void {
-    // Create Element.remove() function if not exist
-    if (!('remove' in Element.prototype)) {
-      /* eslint ignore next */
-      Element.prototype.remove = function () {
-        if (this.parentNode) {
-          this.parentNode.removeChild(this);
-        }
-      };
-    }
-  }
+  // private _defineRemove(): void {
+  //   // Create Element.remove() function if not exist
+  //   if (!('remove' in Element.prototype)) {
+  //     /* eslint ignore next */
+  //     Element.prototype['remove'] = function () {
+  //       if (this.parentNode) {
+  //         this.parentNode.removeChild(this);
+  //       }
+  //     };
+  //   }
+  // }
 
   public initExtension(): Promise<void> {
     // Log.info(LOG_SOURCE, `Initialized SPFx Footer`);
@@ -104,7 +110,7 @@ export default class SpfxFooterApplicationCustomizer
       checkForElemExistance();
       handlePrint();
       
-      this._defineRemove();
+      // this._defineRemove();
   
       // Wait for the placeholders to be created (or handle them being changed) and then
       // render.
