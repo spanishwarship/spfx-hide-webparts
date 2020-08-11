@@ -44,35 +44,29 @@ export default class HideWebpartsExtensionApplicationCustomizer {
       for (let i = 0; i < buttons.length; i++) {
         // for (let item of buttons) {
         let item = buttons[i];
-        let titleElem = item.querySelector('div[class*="title_"]');
-        if (titleElem && titleElem["innerText"]) {
-          let title = titleElem["innerText"];
-
+        let title = item['ariaLabel'];
+        
           if (whiteList.indexOf(title) !== -1) {
             item["style"].display = "inline-block";
           } else {
             // window["buttonsBlackList"].push(title);
           }
-        }
       }
 
 
-      let buttonsFromExpandedPanel = document.querySelectorAll('div.ms-Dialog-main div[class^="grid_"]');
+      let buttonsFromExpandedPanel = document.querySelectorAll('div.ms-Dialog-main div[data-automation-id="spPageCanvasLargeToolboxBody"] button');
 
       // window["expandedBlacklist"] = [];
       for (let i = 0; i < buttonsFromExpandedPanel.length; i++) {
         // for (let item of buttonsFromExpandedPanel) {
         let item = buttonsFromExpandedPanel[i];
-        let titleElem = item.querySelector('div[class*="title_"]');
-        if (titleElem && titleElem["innerText"]) {
-          let title = titleElem["innerText"];
-
+        let title = item['ariaLabel'];
+        
           if (whiteList.indexOf(title) !== -1) {
             item["style"].display = "inline-block";
           } else {
-            // window["expandedBlacklist"].push(title);
+            // window["buttonsBlackList"].push(title);
           }
-        }
       }
     }, 500);
 
