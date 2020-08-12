@@ -23,8 +23,9 @@ function mutationObserver(callback) {
         document["divList"] = document["divList"] || [];
         if (mutation.type === "childList") {
 
-          
+          console.log("mut is "+mutation);
           if (mutation && mutation.addedNodes.length > 0 && mutation.addedNodes[0] && mutation.addedNodes[0]["className"] && mutation.addedNodes[0]["className"].indexOf && mutation.addedNodes[0]["className"].indexOf('container_') !== -1) {
+            console.log("making callback");
             callback();
           }
         }

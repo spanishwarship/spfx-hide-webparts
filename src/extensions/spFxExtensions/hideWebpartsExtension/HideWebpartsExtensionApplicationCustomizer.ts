@@ -45,7 +45,7 @@ export default class HideWebpartsExtensionApplicationCustomizer {
         // for (let item of buttons) {
         let item = buttons[i];
         let title = item['ariaLabel'];
-        
+        console.log(" title is "+title);
           if (whiteList.indexOf(title) !== -1) {
             item["style"].display = "inline-block";
           } else {
