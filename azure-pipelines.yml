@@ -27,7 +27,7 @@ steps:
    dir
   displayName: 'Build and Package Solution"
   
-- task: |CopyFiles@2
+- task: CopyFiles@2
   inputs:
     SourceFolder: '$(Build.SourcesDirectory)/sharepoint/solution'
     Contents: 'spfx-extensions.sppkg'
