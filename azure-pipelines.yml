@@ -25,7 +25,7 @@ steps:
    gulp bundle --ship
    gulp package-solution --ship
    dir
-  displayName: 'Build and Package Solution"
+  displayName: 'Build and Package Solution'
  
 - task: CopyFiles@2
   inputs:
