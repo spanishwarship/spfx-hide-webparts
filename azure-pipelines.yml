@@ -19,3 +19,22 @@ steps:
     npm install
     npm run build
   displayName: 'npm install and build'
+
+- script: |
+   gulp clean
+   gulp bundle --ship
+   gulp package-solution --ship
+   dir
+  displayName: 'Build and Package Solution"
+  
+- task: |CopyFiles@2
+  inputs:
+    SourceFolder: '$(Build.SourcesDirectory)/sharepoint/solution'
+    Contents: 'spfx-extensions.sppkg'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)/drop'
+    
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/drop'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
