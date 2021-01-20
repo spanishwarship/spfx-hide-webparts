@@ -32,7 +32,7 @@ steps:
     SourceFolder: '$(Build.SourcesDirectory)/sharepoint/solution'
     Contents: 'spfx-extensions.sppkg'
     TargetFolder: '$(Build.ArtifactStagingDirectory)/drop'
-    
+
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)/drop'
