@@ -26,7 +26,7 @@ steps:
    gulp package-solution --ship
    dir
   displayName: 'Build and Package Solution"
-  
+ 
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(Build.SourcesDirectory)/sharepoint/solution'
